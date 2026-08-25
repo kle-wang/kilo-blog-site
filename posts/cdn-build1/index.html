@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="小编在这里推荐一款软件，他就是Fikker Fikker 是一款面向 CDN&#x2F;站长 的专业级网站缓存（Webcache）和反向代理服务器软件（Reversed Proxy Server）。 解析原理 举例说明：客户有网站域名 www.123.com，CDN 运营商有域名 cname.cdn.com。 1、客户做的事情最简单了，客户只需要将自己的域名 www.123.com 以 CNAME">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何自建自己的CDN系统？ [推荐使用乐趣云]">
+<meta property="og:url" content="https://keyl.me/posts/cdn-build1/index.html">
+<meta property="og:site_name" content="凯乐窝">
+<meta property="og:description" content="小编在这里推荐一款软件，他就是Fikker Fikker 是一款面向 CDN&#x2F;站长 的专业级网站缓存（Webcache）和反向代理服务器软件（Reversed Proxy Server）。 解析原理 举例说明：客户有网站域名 www.123.com，CDN 运营商有域名 cname.cdn.com。 1、客户做的事情最简单了，客户只需要将自己的域名 www.123.com 以 CNAME">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-23T03:30:11.000Z">
+<meta property="article:modified_time" content="2021-07-23T15:40:48.000Z">
+<meta property="article:author" content="凯乐">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/blog-favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/blog-favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/blog-apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>如何自建自己的CDN系统？ [推荐使用乐趣云]</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/posts/function_youdao/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/posts/macos-mc/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/cdn-build1/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/cdn-build1/&text=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/cdn-build1/&is_video=false&description=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何自建自己的CDN系统？ [推荐使用乐趣云]&body=Check out this article: https://keyl.me/posts/cdn-build1/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/cdn-build1/&name=如何自建自己的CDN系统？ [推荐使用乐趣云]&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/cdn-build1/&t=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        如何自建自己的CDN系统？ [推荐使用乐趣云]
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">凯乐</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-07-23T03:30:11.000Z" class="dt-published" itemprop="datePublished">2021-07-23</time>
+        
+        (Updated: <time datetime="2021-07-23T15:40:48.000Z" class="dt-updated" itemprop="dateModified">2021-07-23</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>小编在这里推荐一款软件，他就是Fikker</p>
+<p>Fikker 是一款面向 CDN&#x2F;站长 的专业级网站缓存（Webcache）和反向代理服务器软件（Reversed Proxy Server）。</p>
+<p>解析原理</p>
+<p>举例说明：客户有网站域名 <a target="_blank" rel="noopener" href="http://www.123.com,cdn/">www.123.com，CDN</a> 运营商有域名 cname.cdn.com。</p>
+<p>1、客户做的事情最简单了，客户只需要将自己的域名 <a target="_blank" rel="noopener" href="http://www.123.com/">www.123.com</a> 以 CNAME 别名的方式解析到 CDN 运营商指定的一个域名 cname.cdn.com 上面就可以了。<br>2、CDN 运营商要做的事情也非常简单，只需要将自己的域名 cname.cdn.com 以 A 记录的方式解析到 Fikker 的多个节点服务器上。 这些智能 DNS 不但允许分省&#x2F;分线路解析，还允许轮询多个 IP 地址。</p>
+<p>常问问题</p>
+<p>1、多个节点时，某一个节点宕机后，如何将流量切换到其它节点？<br>答：智能 DNS 解析一般都带有宕机检测功能，检测到某一个节点宕机后，一般几分钟之内，会将用户访问切换&#x2F;解析到其它节点上面。</p>
+<p>2、Fikker 服务器节点上要不要设置相关 CNAME&#x2F;别名？<br>答：不需要。CNAME&#x2F;别名只用于 DNS 解析。Fikker 上只设置相关网站域名，即浏览器访问啥域名，就设置啥域名。</p>
+<p>3、这些智能 DNS 能不能对一个域名设置&#x2F;解析多个 IP 地址？<br>答：当然可以。这些智能 DNS 不但允许轮询&#x2F;分省&#x2F;分线路解析，还允许解析到多个 IP 地址上。</p>
+<p>安装教程以及下载地址<a target="_blank" rel="noopener" href="https://www.fikker.com/">https://www.fikker.com/</a></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/link/">友情链接</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/cdn-build1/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/cdn-build1/&text=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/cdn-build1/&is_video=false&description=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何自建自己的CDN系统？ [推荐使用乐趣云]&body=Check out this article: https://keyl.me/posts/cdn-build1/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/cdn-build1/&title=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/cdn-build1/&name=如何自建自己的CDN系统？ [推荐使用乐趣云]&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/cdn-build1/&t=如何自建自己的CDN系统？ [推荐使用乐趣云]"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2026
+    凯乐
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+ 
+  <link
+    rel="preload"
+    href="/lib/font-awesome/css/all.min.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript
+    ><link
+      rel="stylesheet"
+      href="/lib/font-awesome/css/all.min.css"
+  /></noscript>
+
+
+    <!-- jquery -->
+
+  
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+
+
+
+<!-- clipboard -->
+
+  
+    
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

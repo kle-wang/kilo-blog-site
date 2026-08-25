@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="记一次hexo迁移到自己的云服务器迁移原由移动和长城宽带用户打开博客的速度很慢，主要原因是XXXX运营商连接国外服务器速度比较慢，由于博客前期都是在github-page上部署的，所以博主打算把博客迁移回自己的服务器。  迁移过程因为博主比较懒得原因，所以不打算直接安装nginx毕竟部署证书也不方便，于是打算使用宝塔+hexo得模式。   **使用宝塔面板的好处：**   操作更方便，习惯了Win">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次hexo迁移到自己的云服务器">
+<meta property="og:url" content="https://keyl.me/posts/qy-hexo/index.html">
+<meta property="og:site_name" content="凯乐窝">
+<meta property="og:description" content="记一次hexo迁移到自己的云服务器迁移原由移动和长城宽带用户打开博客的速度很慢，主要原因是XXXX运营商连接国外服务器速度比较慢，由于博客前期都是在github-page上部署的，所以博主打算把博客迁移回自己的服务器。  迁移过程因为博主比较懒得原因，所以不打算直接安装nginx毕竟部署证书也不方便，于是打算使用宝塔+hexo得模式。   **使用宝塔面板的好处：**   操作更方便，习惯了Win">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://v.91pa.cn/2020/09/29/c7fc8d58e0c51.png">
+<meta property="article:published_time" content="2021-07-23T03:34:48.000Z">
+<meta property="article:modified_time" content="2021-07-23T16:17:16.000Z">
+<meta property="article:author" content="凯乐">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://v.91pa.cn/2020/09/29/c7fc8d58e0c51.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/blog-favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/blog-favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/blog-apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>记一次hexo迁移到自己的云服务器</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/posts/18-birthday/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/posts/pypc_bqg/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/qy-hexo/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/qy-hexo/&text=记一次hexo迁移到自己的云服务器"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/qy-hexo/&is_video=false&description=记一次hexo迁移到自己的云服务器"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记一次hexo迁移到自己的云服务器&body=Check out this article: https://keyl.me/posts/qy-hexo/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/qy-hexo/&name=记一次hexo迁移到自己的云服务器&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/qy-hexo/&t=记一次hexo迁移到自己的云服务器"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1hexo%E8%BF%81%E7%A7%BB%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">记一次hexo迁移到自己的云服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%94%B1"><span class="toc-number">1.1.</span> <span class="toc-text">迁移原由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">迁移过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">正式开始</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        记一次hexo迁移到自己的云服务器
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">凯乐</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-07-23T03:34:48.000Z" class="dt-published" itemprop="datePublished">2021-07-23</time>
+        
+        (Updated: <time datetime="2021-07-23T16:17:16.000Z" class="dt-updated" itemprop="dateModified">2021-07-24</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/hexo/">hexo</a> › <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a> › <a class="category-link" href="/categories/%E8%AE%B0%E5%BD%95/">记录</a> › <a class="category-link" href="/categories/%E8%BF%81%E7%A7%BB/">迁移</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="记一次hexo迁移到自己的云服务器"><a href="#记一次hexo迁移到自己的云服务器" class="headerlink" title="记一次hexo迁移到自己的云服务器"></a>记一次hexo迁移到自己的云服务器</h1><h2 id="迁移原由"><a href="#迁移原由" class="headerlink" title="迁移原由"></a>迁移原由</h2><pre><code>移动和长城宽带用户打开博客的速度很慢，主要原因是XXXX运营商连接国外服务器速度比较慢，由于博客前期都是在github-page上部署的，所以博主打算把博客迁移回自己的服务器。
+</code></pre>
+<h2 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h2><pre><code>因为博主比较懒得原因，所以不打算直接安装nginx毕竟部署证书也不方便，于是打算使用宝塔+hexo得模式。 
+
+**使用宝塔面板的好处：**
+</code></pre>
+<ul>
+<li><strong>操作更方便，习惯了Windows或者对Linux不熟悉的朋友可以更方便</strong></li>
+<li><strong>添加证书更加方便，而且可以开启HTTPS</strong></li>
+</ul>
+<p><strong>我的服务器配置</strong></p>
+<ul>
+<li><p>服务器配置：16H16G15M 绵阳服务器 （乐趣云 <a target="_blank" rel="noopener" href="http://www.lequyun.cn/">www.lequyun.cn</a>) 提供。</p>
+</li>
+<li><p>系统： <code>Centos 7</code></p>
+</li>
+<li><p>环境：<code>宝塔</code> <code>Nginx</code> <code>Hexo</code></p>
+</li>
+</ul>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h3><p> <strong>1) Git安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+
+<p><strong>2)配置Git用户</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br><span class="line"><span class="built_in">chmod</span> 740 /etc/sudoers</span><br><span class="line">vim /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>按 <code>i</code> 键进入文件的编辑模式，按向下键找到如下字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root    ALL=(ALL)       ALL</span><br></pre></td></tr></table></figure>
+
+<p>在其后面增加一句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git     ALL=(ALL)       ALL</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://v.91pa.cn/2020/09/29/c7fc8d58e0c51.png" alt="QQ截图20200929145423.png"></p>
+<p>如图所示。</p>
+<p>然后按<code>ESC</code>输入<code>:wq</code>保存。</p>
+<p><strong>配置密钥</strong></p>
+<p>来到这里的小伙伴应该都已经有了自己的hexo博客，那么肯定已经创建过自己的密钥，一般存放在<code>c/用户/.ssh</code>下。</p>
+<p>将<code>id_rsa.pub</code>里面的密钥复制,在服务器运行下面命令，创建.ssh文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su git</span><br><span class="line"><span class="built_in">mkdir</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p><strong>按<code>INS</code>进入编辑模式粘贴完按 <code>Esc</code> 键退出编辑模式，输入<code>:wq</code> 保存退出。（先输入<code>:</code>，然后输入<code>wq</code>回车）</strong></p>
+<ul>
+<li>修改权限</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 755 ~</span><br><span class="line"><span class="built_in">chmod</span> 700 ~/.ssh</span><br><span class="line"><span class="built_in">chmod</span> 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建Git仓库</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="built_in">mkdir</span> /home/hexo</span><br><span class="line"><span class="built_in">chown</span> git:git -R /home/hexo</span><br></pre></td></tr></table></figure>
+
+<p><strong>推送部署</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="built_in">cd</span> /home/git</span><br><span class="line">git init --bare blog.git</span><br><span class="line"><span class="built_in">chown</span> git:git -R blog.git</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<p> 加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"> git --work-tree=/home/hexo --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+
+<p>共两行 不要遗漏。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /home/git/blog.git/hooks/post-receive</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）安装宝塔</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~ &amp;&amp; yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p>安装好登录宝塔</p>
+<p>然后选择 nginx 也就是 lnmp环境。</p>
+<p>然后添加网页</p>
+<p>根目录选择 <code>/home/hexo</code></p>
+<p>然后添加SSL证书做CDN等操作自行进行。</p>
+<p><strong>4）本地git推送设置</strong></p>
+<ul>
+<li>博客根目录_config下增加</li>
+<li>更改下文中<code>123.123.123.123</code>为你的Ip</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: root@123.123.123.123:/home/git/blog.git    #仓库地址</span><br><span class="line">    branch: master    #分支</span><br></pre></td></tr></table></figure>
+
+<p>然后</p>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
+<p>接下来会让你输入密码 输入root密码即可</p>
+<p>文章结合参考外部资料：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/128649492">https://zhuanlan.zhihu.com/p/128649492</a></p>
+<p><a target="_blank" rel="noopener" href="https://spoience.com/hexo-github-build.html">https://spoience.com/hexo-github-build.html</a></p>
+<p>感谢二位dalao！</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/link/">友情链接</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B0%E4%B8%80%E6%AC%A1hexo%E8%BF%81%E7%A7%BB%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.</span> <span class="toc-text">记一次hexo迁移到自己的云服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E5%8E%9F%E7%94%B1"><span class="toc-number">1.1.</span> <span class="toc-text">迁移原由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">迁移过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">正式开始</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/qy-hexo/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/qy-hexo/&text=记一次hexo迁移到自己的云服务器"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/qy-hexo/&is_video=false&description=记一次hexo迁移到自己的云服务器"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记一次hexo迁移到自己的云服务器&body=Check out this article: https://keyl.me/posts/qy-hexo/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/qy-hexo/&title=记一次hexo迁移到自己的云服务器"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/qy-hexo/&name=记一次hexo迁移到自己的云服务器&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/qy-hexo/&t=记一次hexo迁移到自己的云服务器"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2026
+    凯乐
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+ 
+  <link
+    rel="preload"
+    href="/lib/font-awesome/css/all.min.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript
+    ><link
+      rel="stylesheet"
+      href="/lib/font-awesome/css/all.min.css"
+  /></noscript>
+
+
+    <!-- jquery -->
+
+  
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+
+
+
+<!-- clipboard -->
+
+  
+    
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="写在章首Windows下使用Minecraft相当简单，然而在MacOS下却和Windows的不一样，以下就是对MacOS下运行的详细过程，其中一些地方没有图片，同时也是赶时间，仓促做出来的，望谅解，谢谢 安装Java(JRE) for MacOs前往Oracle的官网下载java https:&#x2F;&#x2F;www.java.com&#x2F;zh_CN&#x2F;download&#x2F;  下载完成以后装载DMG镜像文件  双击J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOs下运行我的世界及相关配置简述">
+<meta property="og:url" content="https://keyl.me/posts/macos-mc/index.html">
+<meta property="og:site_name" content="凯乐窝">
+<meta property="og:description" content="写在章首Windows下使用Minecraft相当简单，然而在MacOS下却和Windows的不一样，以下就是对MacOS下运行的详细过程，其中一些地方没有图片，同时也是赶时间，仓促做出来的，望谅解，谢谢 安装Java(JRE) for MacOs前往Oracle的官网下载java https:&#x2F;&#x2F;www.java.com&#x2F;zh_CN&#x2F;download&#x2F;  下载完成以后装载DMG镜像文件  双击J">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/qxARtDHvJKEXQ8Y.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/QC4V5asP3ScKGT1.png">
+<meta property="article:published_time" content="2021-07-23T03:29:33.000Z">
+<meta property="article:modified_time" content="2021-07-23T16:15:00.000Z">
+<meta property="article:author" content="凯乐">
+<meta property="article:tag" content="游戏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/23/qxARtDHvJKEXQ8Y.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/blog-favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/blog-favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/blog-apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>MacOs下运行我的世界及相关配置简述</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/posts/cdn-build1/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/posts/Markdown-1/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/macos-mc/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/macos-mc/&text=MacOs下运行我的世界及相关配置简述"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/macos-mc/&is_video=false&description=MacOs下运行我的世界及相关配置简述"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MacOs下运行我的世界及相关配置简述&body=Check out this article: https://keyl.me/posts/macos-mc/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/macos-mc/&name=MacOs下运行我的世界及相关配置简述&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/macos-mc/&t=MacOs下运行我的世界及相关配置简述"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E7%AB%A0%E9%A6%96"><span class="toc-number">1.</span> <span class="toc-text">写在章首</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Java-JRE-for-MacOs"><span class="toc-number">2.</span> <span class="toc-text">安装Java(JRE) for MacOs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E6%98%BE%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">开启隐藏文件显示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">终端方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">快捷键方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">配置启动器</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        MacOs下运行我的世界及相关配置简述
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">凯乐</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-07-23T03:29:33.000Z" class="dt-published" itemprop="datePublished">2021-07-23</time>
+        
+        (Updated: <time datetime="2021-07-23T16:15:00.000Z" class="dt-updated" itemprop="dateModified">2021-07-24</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C/">我的世界</a> › <a class="category-link" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="写在章首"><a href="#写在章首" class="headerlink" title="写在章首"></a>写在章首</h1><p>Windows下使用Minecraft相当简单，然而在MacOS下却和Windows的不一样，以下就是对MacOS下运行的详细过程，其中一些地方没有图片，同时也是赶时间，仓促做出来的，望谅解，谢谢</p>
+<h1 id="安装Java-JRE-for-MacOs"><a href="#安装Java-JRE-for-MacOs" class="headerlink" title="安装Java(JRE) for MacOs"></a>安装Java(JRE) for MacOs</h1><p>前往Oracle的官网下载java</p>
+<p><a target="_blank" rel="noopener" href="https://www.java.com/zh_CN/download/">https://www.java.com/zh_CN/download/</a></p>
+<p><img src="https://i.loli.net/2019/11/23/qxARtDHvJKEXQ8Y.png" alt="截屏2019-11-23下午11.03.27.png"></p>
+<p>下载完成以后装载DMG镜像文件</p>
+<p><img src="https://i.loli.net/2019/11/23/QC4V5asP3ScKGT1.png" alt="截屏2019-11-23下午11.06.09.png"></p>
+<p>双击Java 8 Update 231 根据提示操作完成安装</p>
+<h1 id="开启隐藏文件显示"><a href="#开启隐藏文件显示" class="headerlink" title="开启隐藏文件显示"></a>开启隐藏文件显示</h1><p>目的是为了查看”.”开头的隐藏文件，例如<code>.minecraft</code>文件夹默认状态下是隐藏的，以下方法任选一</p>
+<h2 id="终端方法"><a href="#终端方法" class="headerlink" title="终端方法"></a>终端方法</h2><p>在终端（terminal）执行</p>
+<p>显示隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder</span><br></pre></td></tr></table></figure>
+
+<p>隐藏显示隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean false ; killall Finder</span><br></pre></td></tr></table></figure>
+
+<h2 id="快捷键方法"><a href="#快捷键方法" class="headerlink" title="快捷键方法"></a>快捷键方法</h2><p>Command+Shift+. 可以显示隐藏文件、文件夹，再按一次，恢复隐藏</p>
+<h1 id="配置启动器"><a href="#配置启动器" class="headerlink" title="配置启动器"></a>配置启动器</h1><p>下载HMCL启动器 <a target="_blank" rel="noopener" href="http://hmcl.huangyuhui.net/download">http://hmcl.huangyuhui.net/download</a></p>
+<p>选择Mac版本的，下载下来是<code>.jar</code>文件</p>
+<p>把该文件放入我的世界的文件夹中，要求和<code>.minecraft</code>文件夹同级目录</p>
+<p>直接运行启动器，选择离线模式，填写游戏姓名，一般是英文字母组成，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">H_kaile</span><br><span class="line">kaile</span><br><span class="line">woaikaile</span><br></pre></td></tr></table></figure>
+
+<p>不建议写成例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4556</span><br><span class="line">46554452</span><br><span class="line">dasdasdwefgwe</span><br></pre></td></tr></table></figure>
+
+<p>不可以写成例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">凯乐</span><br></pre></td></tr></table></figure>
+
+
+
+<p>左侧列表选择带有forge的启动项，表示采用安装有forge的内置服务端启动，可以使用模组（MOD），默认的如果是不带forge，则代表原版</p>
+<p>最后点击右面的启动游戏，Enjoy～</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/categories/">分类</a></li>
+        
+          <li><a href="/link/">友情链接</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E7%AB%A0%E9%A6%96"><span class="toc-number">1.</span> <span class="toc-text">写在章首</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Java-JRE-for-MacOs"><span class="toc-number">2.</span> <span class="toc-text">安装Java(JRE) for MacOs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%E6%98%BE%E7%A4%BA"><span class="toc-number">3.</span> <span class="toc-text">开启隐藏文件显示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">终端方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">快捷键方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%90%AF%E5%8A%A8%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">配置启动器</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://keyl.me/posts/macos-mc/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://keyl.me/posts/macos-mc/&text=MacOs下运行我的世界及相关配置简述"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://keyl.me/posts/macos-mc/&is_video=false&description=MacOs下运行我的世界及相关配置简述"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=MacOs下运行我的世界及相关配置简述&body=Check out this article: https://keyl.me/posts/macos-mc/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://keyl.me/posts/macos-mc/&title=MacOs下运行我的世界及相关配置简述"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://keyl.me/posts/macos-mc/&name=MacOs下运行我的世界及相关配置简述&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://keyl.me/posts/macos-mc/&t=MacOs下运行我的世界及相关配置简述"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2026
+    凯乐
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/categories/">分类</a></li><!--
+     --><!--
+       --><li><a href="/link/">友情链接</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+ 
+  <link
+    rel="preload"
+    href="/lib/font-awesome/css/all.min.css"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript
+    ><link
+      rel="stylesheet"
+      href="/lib/font-awesome/css/all.min.css"
+  /></noscript>
+
+
+    <!-- jquery -->
+
+  
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+
+
+
+<!-- clipboard -->
+
+  
+    
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
